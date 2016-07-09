@@ -5,18 +5,19 @@ Based on https://github.com/dcm4che-dockerfiles/postgres-dcm4chee
 
 Migrated from https://github.com/opendicom/dockerized-dcm4chee-mariadb
 
-There is a docker-compose fila available that bootstaps two replicated nodes.
-Get it up simply by running
-`docker-compose up`
+There are a couple of compose files available on the `docker-compose` directory that bootstap replicated nodes.
+The simplest one starts a local environment with two containers. The purpose of the other two (`host_one.yml` and `host_two.yml`) is to test the replication with containers running on separate docker hosts.
 
-Verify it's working. Get inside the first container by running
-`docker exec -ti db_node_one bash`
+Let's start with the local environment. Get it up by running
+`docker-compose up`. After that, get inside the first container by executing
+`docker exec -ti db_node_one bash` and:
 
 - Start a mysql session: `mysql -psecure awesome`
 - Get the status of the cluster: `SHOW STATUS LIKE 'wsrep_cluster_size';`
 - Insert a row in some random table: `insert into code (pk) values(123);`
 
-Now read that row from the other node. Get inside it by running `docker exec -ti db_node_two bash`
+Now read that row from the other node. Get inside it by executing `docker exec -ti db_node_two bash` and:
+
 - Start a mysql session: `mysql -psecure awesome`
 - Get the status of the cluster: `SHOW STATUS LIKE 'wsrep_cluster_size';`
 - Read from the table: `select * from code;`
