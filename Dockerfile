@@ -5,6 +5,6 @@ COPY server.cnf /etc/mysql/conf.d/server.cnf
 RUN chown root:mysql /etc/mysql/conf.d/server.cnf
 RUN chmod 664 /etc/mysql/conf.d/server.cnf
 
-# copy sql files from version 5.3.1
+# copy sql files
 COPY docker-entrypoint-initdb.d docker-entrypoint-initdb.d/
 RUN chmod 777 -Rf /docker-entrypoint-initdb.d
