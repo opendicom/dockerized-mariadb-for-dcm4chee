@@ -4,7 +4,7 @@ version: '2'
 
 services:
     db_node_two:
-        image: opendicom/mariadb-for-dcm4chee:5.8.1
+        image: opendicom/mariadb-for-dcm4chee:5.17.0
         ports:
             - "3306:3306"
             - "4567:4567"
