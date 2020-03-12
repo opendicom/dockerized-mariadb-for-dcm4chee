@@ -4,7 +4,7 @@ version: '2'
 
 services:
     db_node_one:
-        image: opendicom/mariadb-for-dcm4chee:5.17.0
+        image: opendicom/mariadb-for-dcm4chee:5.21.0
         container_name: db_node_one
         command: ["mysqld", "--wsrep-new-cluster"]
         environment:
@@ -19,7 +19,7 @@ services:
             REPLICATION_PASSWORD: password
 
     db_node_two:
-        image: opendicom/mariadb-for-dcm4chee:5.17.0
+        image: opendicom/mariadb-for-dcm4chee:5.21.0
         container_name: db_node_two
         depends_on:
             - db_node_one
